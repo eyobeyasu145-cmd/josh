@@ -1,0 +1,6 @@
+{
+  "name": "Josh Electronics Digital Catalog",
+  "description": "Premium digital showroom and service catalog for Josh Electronics. Highlights phone sales, repair services, print & edit services, electronics, media accessories, and convenient payment accounts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
