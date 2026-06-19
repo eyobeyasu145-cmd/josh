@@ -1,15 +1,15 @@
 import { CatalogItem, BankAccount, FAQItem, ReviewItem } from './types';
 
 export const CATEGORIES = [
-  { slug: 'payment-accounts', name: 'Bank & Transfer', icon: 'CreditCard', description: 'Josh official payment accounts' },
-  { slug: 'printing-services', name: 'Printing & Design', icon: 'Printer', description: 'Professional document and printing services' },
-  { slug: 'button-phones', name: 'Button Phones', icon: 'Dialpad', description: 'Simple, durable, and reliable basic phones' },
-  { slug: 'smartphones', name: 'Smartphones', icon: 'Smartphone', description: 'Latest standard smartphones with high specs' },
-  { slug: 'repair-services', name: 'Phone Repairs', icon: 'Wrench', description: 'Expert hardware fixing and system software tuning' },
-  { slug: 'electronics-accessories', name: 'Accessories', icon: 'Headphones', description: 'Chargers, adapters, earphones & electronics' },
-  { slug: 'electrical-materials', name: 'Electrical Materials', icon: 'Zap', description: 'Premium electrical wires and switches' },
-  { slug: 'movies-entertainment', name: 'Movies & Media', icon: 'Film', description: 'HD single and series movies translated into Amharic' },
-  { slug: 'mobile-app-services', name: 'App & Custom Account Services', icon: 'AppWindow', description: 'Phone account setup, restore, and transfer' }
+  { slug: 'payment-accounts', name: 'Bank & Transfer Accounts', icon: 'CreditCard', description: 'Josh official bank transfer details' },
+  { slug: 'printing-services', name: 'Printing & Editing Services', icon: 'Printer', description: 'Professional document, CV, printing and custom editing' },
+  { slug: 'button-phones', name: 'Button Phones', icon: 'Dialpad', description: 'Simple, durable, and reliable basic mobile phones' },
+  { slug: 'smartphones', name: 'Smartphones', icon: 'Smartphone', description: 'Latest standard and high-spec smartphones' },
+  { slug: 'repair-services', name: 'Phone Repair Services', icon: 'Wrench', description: 'Expert hardware fixing and system software troubleshooting' },
+  { slug: 'electronics-accessories', name: 'Electronics Accessories', icon: 'Headphones', description: 'Chargers, original adapters, and earphones' },
+  { slug: 'electrical-materials', name: 'Electrical Materials', icon: 'Zap', description: 'Premium copper wires and electrical inputs' },
+  { slug: 'movies-entertainment', name: 'Movies & Entertainment', icon: 'Film', description: 'HD single and series movies translated to Amharic' },
+  { slug: 'mobile-app-services', name: 'Mobile Applications & Account Services', icon: 'AppWindow', description: 'Secure account restoration and mobile app setup' }
 ];
 
 export const BANK_ACCOUNTS: BankAccount[] = [
@@ -1244,7 +1244,7 @@ export const FAQS: FAQItem[] = [
   {
     id: 'faq-1',
     question: 'Where is Josh Electronics physically located?',
-    answer: 'We are situated in the main electronic retail strip in Addis Ababa, Ethiopia. We provide accurate Google Maps pin guidance below or you can call us directly via one tap for instant routing instructions!',
+    answer: 'We are situated in Kilinto, Addis Ababa, Ethiopia. We provide accurate Google Maps coordinates in our footer map component, or you can call us via one tap for instant routing instructions!',
     category: 'General'
   },
   {

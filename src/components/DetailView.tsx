@@ -339,24 +339,24 @@ Browse our live digital showroom here!`;
               Place Voucher / Inquiry Offline
             </h4>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               
               <button
                 onClick={handleTelegramInquiry}
-                className="flex items-center justify-center gap-2 py-3.5 px-4 bg-sky-600 hover:bg-sky-500 text-white font-sans font-extrabold text-xs tracking-wider uppercase rounded-xl shadow-lg shadow-sky-600/10 hover:shadow-sky-600/20 transition-all cursor-pointer transform hover:-translate-y-0.5"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 bg-sky-600 hover:bg-sky-550 text-white font-sans font-extrabold text-xs tracking-wider uppercase rounded-full shadow-lg shadow-sky-600/10 hover:shadow-sky-600/20 transition-all cursor-pointer hover:scale-105"
                 aria-label="Ask about this item on Telegram"
               >
-                <MessageSquare className="w-4.5 h-4.5" />
-                <span>Contact Telegram</span>
+                <MessageSquare className="w-4 h-4" />
+                <span>• Contact Telegram</span>
               </button>
 
               <button
                 onClick={handleWhatsAppInquiry}
-                className="flex items-center justify-center gap-2 py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-sans font-extrabold text-xs tracking-wider uppercase rounded-xl shadow-lg shadow-emerald-600/10 hover:shadow-emerald-600/20 transition-all cursor-pointer transform hover:-translate-y-0.5"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-550 text-white font-sans font-extrabold text-xs tracking-wider uppercase rounded-full shadow-lg shadow-emerald-600/10 hover:shadow-emerald-600/20 transition-all cursor-pointer hover:scale-105"
                 aria-label="Ask about this item on WhatsApp"
               >
-                <Phone className="w-4.5 h-4.5" />
-                <span>Instant Call / Inquiry</span>
+                <Phone className="w-4 h-4" />
+                <span>• contact WhatsApp</span>
               </button>
 
             </div>

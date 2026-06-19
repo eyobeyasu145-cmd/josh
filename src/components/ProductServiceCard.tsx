@@ -85,13 +85,13 @@ export default function ProductServiceCard({
       </div>
 
       {/* Narrative Section */}
-      <div className="p-5 flex flex-col justify-between flex-1">
+      <div className="p-4 sm:p-4.5 flex flex-col justify-between flex-1">
         
         <div>
           {/* Tag & Brand label */}
           <div className="flex items-center justify-between mb-2">
             <span className="text-[10px] font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
-              {isProduct ? (item as any).brand : 'WOW JOSH SERVICE'}
+              {isProduct ? (item as any).brand : 'JOSH SERVICE'}
             </span>
             {item.tags && item.tags.length > 0 && (
               <span className="text-[9px] text-slate-400 dark:text-slate-500 font-bold max-w-24 truncate">
@@ -148,9 +148,9 @@ export default function ProductServiceCard({
               e.stopPropagation();
               onViewDetails();
             }}
-            className="px-4 py-2.5 bg-slate-5 w-fit rounded-xl border border-slate-200/80 hover:border-blue-400 group-hover:bg-blue-600 group-hover:text-white hover:text-white dark:bg-slate-800 dark:border-slate-700/80 dark:hover:bg-blue-600 dark:hover:border-blue-600 font-sans font-extrabold text-[11px] tracking-wider uppercase transition-all shrink-0"
+            className="px-3.5 py-1.5 bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-blue-300 font-sans font-extrabold text-[10px] uppercase rounded-full border border-blue-100 dark:border-slate-705 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-all shrink-0"
           >
-            View Specs
+            • View Details
           </button>
         </div>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   CreditCard, Printer, Smartphone, Wrench, Headphones, Zap, Film, AppWindow,
   Search, ShieldCheck, Heart, BookmarkCheck, ArrowRight, Star, SlidersHorizontal,
-  BookmarkX, Timer, Info, Eye, Phone, MapPin, Hash, Sparkles, Copy, Check
+  BookmarkX, Timer, Info, Eye, Phone, MapPin, Hash, Sparkles, Copy, Check, Home
 } from 'lucide-react';
 
 import Header from './components/Header';
@@ -209,327 +209,126 @@ export default function App() {
       />
 
       {/* Main Container Stage */}
-      <main className="flex-grow pb-16">
+      <main className="flex-grow pb-24 md:pb-16">
 
         {/* ----------------- VIEW 1: HOME SCREEN ----------------- */}
         {activeState.view === 'home' && (
-          <div className="space-y-16 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="space-y-6 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             
-            {/* Animated Hero Carousel Slider */}
-            <BannerSlider onNavigate={(view, catSlug) => navigateTo(view, catSlug)} />
-
-            {/* Master Bento Grid Showcase */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6" id="wow-josh-bento-grid">
-              
-              {/* Card 1: Fast Repairs Hub (cols: 12, md: 4) */}
-              <div 
-                id="bento-card-repairs"
-                onClick={() => navigateTo('category', 'repair-services')}
-                className="col-span-12 md:col-span-4 bento-card cursor-pointer flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="bg-blue-50 dark:bg-blue-900/40 p-2 rounded-xl text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
-                      <Wrench className="w-6 h-6" />
-                    </div>
-                    <span className="text-[10px] uppercase font-bold text-emerald-600 bg-emerald-50 dark:text-emerald-400 dark:bg-emerald-900/20 px-2.5 py-1 rounded-full border border-emerald-200/40 dark:border-emerald-800/45 animate-pulse">
-                      Express Service
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white leading-tight mb-2">
-                    Fast Phone Repairs
-                  </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-sans leading-relaxed">
-                    Premium hardware fixes and software troubleshooting while you wait. Certified shop procedures.
-                  </p>
-                </div>
-                
-                <div className="mt-5 space-y-2 border-t border-slate-100 dark:border-slate-800/80 pt-4">
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-slate-500 dark:text-slate-400 font-medium">Charging Port Fit</span>
-                    <span className="font-mono font-bold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 px-2 py-0.5 rounded">150 ETB</span>
-                  </div>
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-slate-500 dark:text-slate-400 font-medium">Screen Glass Upgrade</span>
-                    <span className="font-mono font-bold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 px-2 py-0.5 rounded">3000 ETB</span>
-                  </div>
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-slate-500 dark:text-slate-400 font-medium">Software Reset & Tune</span>
-                    <span className="font-mono font-bold text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 px-2 py-0.5 rounded">300 ETB</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2: Payment Gateways (cols: 12, md: 4) */}
-              <div 
-                id="bento-card-payments"
-                className="col-span-12 md:col-span-4 bento-card border-dashed border-2 border-blue-200/60 dark:border-slate-800 bg-slate-50/40 dark:bg-slate-950/20 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="bg-amber-50 dark:bg-amber-950/40 p-2 rounded-xl text-amber-500 dark:text-amber-400">
-                      <CreditCard className="w-5 h-5" />
-                    </div>
-                    <span className="text-xs uppercase font-extrabold tracking-wider text-slate-700 dark:text-slate-350 font-heading">
-                      Payment Accounts
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-sans mb-4 leading-relaxed">
-                    Click accounts below to copy bank details instantly. Send screenshots to Telegram support!
-                  </p>
-                </div>
-
-                <div className="space-y-2.5 max-h-48 overflow-y-auto no-scrollbar pr-0.5">
-                  {[
-                    { bank: 'Abyssinia Bank', acc: '206540648', holder: 'Yishak Eyasu Tesema' },
-                    { bank: 'Commercial Bank', acc: '1000536182601', holder: 'Yishak Eyasu Tesema' },
-                    { bank: 'Telebirr Wallet', acc: '0964140000', holder: 'Instant transfer' }
-                  ].map((account) => {
-                    const isCopied = copiedText === account.acc;
-                    return (
-                      <div 
-                        key={account.acc} 
-                        onClick={() => handleCopyText(account.acc)}
-                        className="bg-white dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-200 dark:border-slate-850 hover:border-blue-300 dark:hover:border-slate-700 cursor-pointer transition-all flex items-center justify-between group"
-                      >
-                        <div className="min-w-0">
-                          <p className="text-[9px] uppercase font-bold text-slate-400">{account.bank}</p>
-                          <p className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200 truncate">{account.acc}</p>
-                          <p className="text-[9px] text-blue-500 dark:text-blue-400 font-medium truncate">{account.holder}</p>
-                        </div>
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleCopyText(account.acc);
-                          }}
-                          className="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-950 text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors shrink-0 ml-2"
-                          title="Copy account number"
-                        >
-                          {isCopied ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-500" />
-                          ) : (
-                            <Copy className="w-3.5 h-3.5" />
-                          )}
-                        </button>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Card 3: Digital Printing and custom Writing (cols: 12, md: 4) */}
-              <div 
-                id="bento-card-services"
-                onClick={() => navigateTo('category', 'printing-services')}
-                className="col-span-12 md:col-span-4 bento-card cursor-pointer flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="bg-indigo-50 dark:bg-indigo-950/40 w-10 h-10 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4 group-hover:scale-110 transition-transform">
-                    <Printer className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-sm font-bold font-heading text-slate-900 dark:text-white mb-1.5 uppercase tracking-wide">
-                    Digital Print & Design Hub
-                  </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-sans leading-relaxed">
-                    Professional, speed-calibrated printing and custom typography writing services.
-                  </p>
-                </div>
-                
-                <ul className="text-xs space-y-2 font-sans text-slate-600 dark:text-slate-400 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
-                  <li className="flex items-center gap-2 font-medium">
-                    <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
-                    <span>Crisp Laser B/W & Color Print</span>
-                  </li>
-                  <li className="flex items-center gap-2 font-medium">
-                    <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
-                    <span>Birthday & Invitation Cards</span>
-                  </li>
-                  <li className="flex items-center gap-2 font-medium">
-                    <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
-                    <span>Document Laminating & CV design</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Card 4: Accessories & Electrical raw materials (cols: 12, md: 7) */}
-              <div 
-                id="bento-card-accessories"
-                onClick={() => navigateTo('category', 'electronics-accessories')}
-                className="col-span-12 md:col-span-7 bento-card cursor-pointer flex flex-col sm:flex-row gap-5 items-center group"
-              >
-                <div className="w-full sm:w-28 h-28 bg-slate-100 dark:bg-slate-950 rounded-2xl overflow-hidden shrink-0 border border-slate-200/40 dark:border-slate-800">
-                  <img 
-                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=300&auto=format&fit=crop" 
-                    alt="Premium Wearables"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="flex-1 text-center sm:text-left">
-                  <span className="amber-pill mb-1.5 inline-flex">Accessories & Materials</span>
-                  <h4 className="font-heading font-extrabold text-sm text-[#0F172A] dark:text-white">
-                    Showroom Premium Gear
-                  </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 pb-2 leading-relaxed">
-                    Find original adapters, fast-chargers, earbuds, and top-tier multi-threaded copper electrical wires (1.5mm - 4mm).
-                  </p>
-                  <button className="text-blue-500 hover:text-blue-400 font-bold text-xs flex items-center justify-center sm:justify-start gap-1 font-heading pointer-events-none">
-                    <span>View Materials Catalog</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Card 5: Amharic Translated Movies block (cols: 12, md: 5) */}
-              <div 
-                id="bento-card-movies"
-                onClick={() => navigateTo('category', 'movies-entertainment')}
-                className="col-span-12 md:col-span-5 bento-card bg-[#0F172A] dark:bg-slate-900 text-white flex flex-col items-center justify-center text-center p-6 cursor-pointer relative overflow-hidden group border border-slate-800"
-              >
-                <div className="absolute right-0 bottom-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:scale-150 transition-all pointer-events-none" />
-                <div className="absolute left-0 top-0 w-16 h-16 bg-amber-500/10 rounded-full blur-xl pointer-events-none" />
-                
-                <Film className="w-8 h-8 text-amber-500 mb-2 group-hover:scale-110 transition-transform duration-300" />
-                <h4 className="text-sm font-heading font-extrabold text-white uppercase tracking-wider">
-                  Translated Movies & HD Media
-                </h4>
-                <p className="text-[11px] text-slate-400 mt-1 max-w-xs font-sans leading-relaxed">
-                  English Season packs with high-fidelity Amharic voice translation. Quick flash transfer setup!
+            {/* Compact Header */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-100 dark:border-slate-800/65 pb-5">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black font-heading tracking-tight text-slate-900 dark:text-white">
+                  Josh Electronics Showroom
+                </h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
+                  Select a category below to explore original smartphones, reliable button phones, certified repair systems, print designs and translated movies.
                 </p>
               </div>
 
-              {/* Card 6: Shop coordinates and Open hours info (cols: 12, md: 12) */}
-              <div 
-                id="bento-card-hours"
-                className="col-span-12 bento-card flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-slate-900 border border-slate-200/55"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="relative flex h-3 w-3 shrink-0">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                  </span>
-                  <div>
-                    <h5 className="font-heading font-extrabold text-[#0F172A] dark:text-white text-xs uppercase tracking-wider">
-                      Showroom Active Open Hours
-                    </h5>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 font-sans mt-0.5">
-                      Monday - Saturday: 8:30 AM - 7:35 PM (Standby support on Telegram 24/7)
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 shrink-0 font-medium bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 px-3 py-1.5 rounded-xl">
-                  <MapPin className="w-4 h-4 text-rose-500" />
-                  <span>Mercato Electronic Strip, Central Block Shop #12</span>
-                </div>
+              {/* Quick Actions / Custom Chips Selection */}
+              <div className="flex flex-wrap gap-1.5 pt-1 md:pt-0 shrink-0">
+                <span 
+                  onClick={() => navigateTo('category', 'smartphones')}
+                  className="cursor-pointer text-[10px] sm:text-[11px] font-extrabold px-3 py-1 rounded-full bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/40 dark:hover:bg-blue-900/40 text-blue-600 dark:text-blue-400 border border-blue-150/40 dark:border-blue-900/50 transition-all flex items-center gap-1 hover:scale-105"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  <span>New</span>
+                </span>
+                <span 
+                  onClick={() => navigateTo('category', 'repair-services')}
+                  className="cursor-pointer text-[10px] sm:text-[11px] font-extrabold px-3 py-1 rounded-full bg-rose-50 hover:bg-rose-100 dark:bg-rose-955/40 dark:hover:bg-rose-900/40 text-rose-600 dark:text-rose-450 border border-rose-150/40 dark:border-rose-900/50 transition-all flex items-center gap-1 hover:scale-105"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-550"></span>
+                  <span>Popular</span>
+                </span>
+                <span 
+                  onClick={() => navigateTo('category', 'electronics-accessories')}
+                  className="cursor-pointer text-[10px] sm:text-[11px] font-extrabold px-3 py-1 rounded-full bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-955/40 dark:hover:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 border border-emerald-150/40 dark:border-emerald-900/50 transition-all flex items-center gap-1 hover:scale-105"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  <span>Best Seller</span>
+                </span>
+                <span 
+                  onClick={() => navigateTo('category', 'printing-services')}
+                  className="cursor-pointer text-[10px] sm:text-[11px] font-extrabold px-3 py-1 rounded-full bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-955/40 dark:hover:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 border border-indigo-150/40 dark:border-indigo-900/50 transition-all flex items-center gap-1 hover:scale-105"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                  <span>Service</span>
+                </span>
               </div>
-
             </div>
 
-            {/* Featured category directories list */}
-            <div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-8">
-                <div>
-                  <h3 className="text-2xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
-                    Showroom Product & Service Categories
-                  </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Interact with our diverse hardware modules, design writing services, and entertainment drives.
-                  </p>
-                </div>
-                <button
-                  onClick={() => navigateTo('category', undefined)}
-                  className="text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1 group hover:-translate-y-0.5 transition-all self-end sm:self-auto"
+            {/* Two-Column responsive Category Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+              {CATEGORIES.map((cat) => (
+                <div
+                  key={cat.slug}
+                  onClick={() => navigateTo('category', cat.slug)}
+                  className="p-4 sm:p-5 bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl hover:border-blue-450 dark:hover:border-blue-700/80 hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between cursor-pointer group hover:scale-[1.03]"
+                  style={{ borderRadius: '16px' }}
                 >
-                  <span>Explore full showroom</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-all" />
-                </button>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {CATEGORIES.map((cat) => (
-                  <div
-                    key={cat.slug}
-                    onClick={() => navigateTo('category', cat.slug)}
-                    className="p-5 bg-white dark:bg-slate-900 border border-slate-250/20 dark:border-slate-800/80 rounded-2xl hover:border-blue-400 dark:hover:border-blue-700/80 hover:shadow-md transition-all duration-300 flex items-start gap-4 cursor-pointer group"
-                  >
-                    <div className="p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform">
+                  <div>
+                    {/* Visual Card Image / Icon Area */}
+                    <div className="p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-100 dark:border-slate-800/80 group-hover:scale-105 transition-transform duration-300 w-fit mb-3">
                       {getCategoryIcon(cat.icon)}
                     </div>
 
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-heading font-extrabold text-sm text-[#0F172A] dark:text-slate-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {cat.name}
-                      </h4>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs truncate mb-3">
-                        {cat.description}
-                      </p>
-                      <span className="text-[10px] bg-slate-50 dark:bg-slate-950 px-2 py-0.5 rounded text-slate-400 dark:text-slate-500 font-extrabold uppercase tracking-widest">
-                        {getCategoryCountLabel(cat.slug)}
-                      </span>
-                    </div>
+                    {/* Category Title Links */}
+                    <h3 
+                      className="font-heading font-extrabold text-xs sm:text-sm text-[#0F172A] dark:text-slate-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors cursor-pointer"
+                    >
+                      {cat.name}
+                    </h3>
+                    
+                    <p className="text-slate-400 dark:text-slate-500 text-[10px] sm:text-xs leading-relaxed line-clamp-2 sm:line-clamp-3 mb-2">
+                      {cat.description}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Payment Section Preview on Homepage */}
-            <div className="bg-gradient-to-br from-slate-900 to-slate-950 p-6 sm:p-10 rounded-3xl border border-slate-800 text-white relative overflow-hidden">
-              <div className="absolute right-0 top-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-              
-              <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold text-blue-400 border border-white/5 mb-4 uppercase tracking-wider">
-                  <CreditCard className="w-3.5 h-3.5" />
-                  <span>Transfer details</span>
+                  {/* Tiny status indicator */}
+                  <div className="mt-2 pt-2 border-t border-slate-50 dark:border-slate-800/60 flex items-center justify-between">
+                    <span className="text-[9px] bg-slate-50 dark:bg-slate-950 px-2 py-0.5 rounded text-slate-400 dark:text-slate-500 font-extrabold uppercase tracking-widest truncate">
+                      {getCategoryCountLabel(cat.slug)}
+                    </span>
+                    <span className="text-blue-500 group-hover:translate-x-0.5 transition-transform text-[10px] font-bold hidden sm:inline-flex items-center">
+                      ➡️
+                    </span>
+                  </div>
                 </div>
-                
-                <h3 className="text-2xl sm:text-3xl font-extrabold font-heading tracking-tight mb-3">
-                  Direct Bank Payments & Transfers
-                </h3>
-                
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-sans">
-                  We accept Abyssinia, Awash, Dashen, Commercial Bank of Ethiopia (CBE), and Telebirr direct deposits or mobile transfers. View our verified account numbers, copy details effortlessly, or scan simulated QR envelopes.
-                </p>
-
-                <button
-                  onClick={() => navigateTo('category', 'payment-accounts')}
-                  className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md shadow-blue-500/20"
-                >
-                  Browse Payment Accounts
-                </button>
-              </div>
+              ))}
             </div>
 
             {/* Dynamically tracked Recently Viewed segment (Show only if count > 0) */}
             {recentlyViewed.length > 0 && (
-              <div className="animate-in fade-in duration-300">
-                <div className="flex items-center gap-2 mb-6 text-slate-600 dark:text-slate-400">
-                  <Eye className="w-5 h-5" />
-                  <h4 className="font-heading font-extrabold text-sm uppercase tracking-wider text-slate-700 dark:text-slate-350">
+              <div className="animate-in fade-in duration-300 border-t border-slate-100 dark:border-slate-800/60 pt-6">
+                <div className="flex items-center gap-2 mb-4 text-slate-600 dark:text-slate-400">
+                  <Eye className="w-4 h-4 text-slate-405" />
+                  <h4 className="font-heading font-extrabold text-xs uppercase tracking-wider text-slate-700 dark:text-slate-350">
                     Recently Viewed Showroom Items
                   </h4>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
                   {CATALOG_ITEMS.filter((item) => recentlyViewed.includes(item.id))
                     .slice(0, 4)
                     .map((item) => (
                       <div
                         key={item.id}
                         onClick={() => navigateTo('detail', item.category, item.id)}
-                        className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-xl hover:border-blue-400 transition-all cursor-pointer flex gap-3 h-20 items-center justify-between"
+                        className="p-2 sm:p-2.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/80 rounded-xl hover:border-blue-400/80 transition-all cursor-pointer flex gap-2.5 items-center justify-between"
                       >
                         <img 
                           src={item.image} 
                           alt={item.name} 
                           referrerPolicy="no-referrer"
-                          className="w-12 h-12 object-cover rounded-lg border border-slate-200/30 shrink-0" 
+                          className="w-9 h-9 sm:w-10 sm:h-10 object-cover rounded-lg border border-slate-200/30 shrink-0" 
                         />
                         <div className="min-w-0 flex-grow">
-                          <h5 className="text-xs font-bold text-slate-800 dark:text-white truncate">
+                          <h5 className="text-[10px] sm:text-xs font-bold text-slate-800 dark:text-white truncate">
                             {item.name}
                           </h5>
-                          <p className="text-[10px] text-slate-400 mt-0.5 font-bold truncate">
+                          <p className="text-[9px] sm:text-[10px] text-slate-450 mt-0.5 font-bold truncate">
                             {item.priceLabel || (item.price ? `${item.price} ETB` : 'Service')}
                           </p>
                         </div>
@@ -814,6 +613,77 @@ export default function App() {
 
       {/* Floating interactive call utility triggers */}
       <FloatingActions />
+
+      {/* Mobile Bottom Navigation Bar (Fixed screen bottom) */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/60 dark:border-slate-800/60 py-2.5 px-6 flex items-center justify-between shadow-lg">
+        <button
+          onClick={() => navigateTo('home')}
+          className={`flex flex-col items-center justify-center gap-1.5 transition-all text-center ${
+            activeState.view === 'home'
+              ? 'text-blue-600 dark:text-blue-400 font-extrabold scale-105'
+              : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-400 font-semibold'
+          }`}
+          style={{ width: '20%' }}
+        >
+          <Home className="w-5 h-5" />
+          <span className="text-[10px] tracking-tight">Home</span>
+        </button>
+
+        <button
+          onClick={() => navigateTo('category', 'smartphones')}
+          className={`flex flex-col items-center justify-center gap-1.5 transition-all text-center ${
+            (activeState.view === 'category' || activeState.view === 'detail') && 
+            (activeState.categorySlug === 'smartphones' || activeState.categorySlug === 'button-phones')
+              ? 'text-blue-600 dark:text-blue-400 font-extrabold scale-105'
+              : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-400 font-semibold'
+          }`}
+          style={{ width: '20%' }}
+        >
+          <Smartphone className="w-5 h-5" />
+          <span className="text-[10px] tracking-tight">Phones</span>
+        </button>
+
+        <button
+          onClick={() => navigateTo('category', 'repair-services')}
+          className={`flex flex-col items-center justify-center gap-1.5 transition-all text-center ${
+            (activeState.view === 'category' || activeState.view === 'detail') && 
+            (activeState.categorySlug === 'repair-services' || activeState.categorySlug === 'printing-services' || activeState.categorySlug === 'mobile-app-services')
+              ? 'text-blue-600 dark:text-blue-400 font-extrabold scale-105'
+              : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-400 font-semibold'
+          }`}
+          style={{ width: '20%' }}
+        >
+          <Wrench className="w-5 h-5" />
+          <span className="text-[10px] tracking-tight">Services</span>
+        </button>
+
+        <button
+          onClick={() => navigateTo('category', 'movies-entertainment')}
+          className={`flex flex-col items-center justify-center gap-1.5 transition-all text-center ${
+            (activeState.view === 'category' || activeState.view === 'detail') && 
+            activeState.categorySlug === 'movies-entertainment'
+              ? 'text-blue-600 dark:text-blue-400 font-extrabold scale-105'
+              : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-400 font-semibold'
+          }`}
+          style={{ width: '20%' }}
+        >
+          <Film className="w-5 h-5" />
+          <span className="text-[10px] tracking-tight">Movies</span>
+        </button>
+
+        <button
+          onClick={() => navigateTo('bookmarks')}
+          className={`flex flex-col items-center justify-center gap-1.5 transition-all text-center ${
+            activeState.view === 'bookmarks'
+              ? 'text-blue-600 dark:text-blue-400 font-extrabold scale-105'
+              : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-400 font-semibold'
+          }`}
+          style={{ width: '20%' }}
+        >
+          <Star className="w-5 h-5" />
+          <span className="text-[10px] tracking-tight">Favorites</span>
+        </button>
+      </div>
 
     </div>
   );

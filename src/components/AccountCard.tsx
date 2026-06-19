@@ -96,31 +96,51 @@ Account Number: ${account.accountNumber}`;
         </div>
 
         {/* Action Bar */}
-        <div className="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/60 mt-auto">
+        <div className="flex items-center gap-2 pt-3 border-t border-slate-100 dark:border-slate-800/60 mt-auto">
           
           <button
+            onClick={handleCopyAccount}
+            className={`flex-1 py-1.5 px-3.5 rounded-full font-sans font-extrabold text-[10px] uppercase flex items-center justify-center gap-1 transition-all border shrink-0 ${
+              copiedAccount
+                ? 'bg-emerald-50 text-emerald-600 border-emerald-250 dark:bg-emerald-950/40 dark:text-emerald-400'
+                : 'bg-blue-50 border-blue-105 text-blue-600 hover:bg-blue-600 hover:text-white dark:bg-slate-800 dark:border-slate-705 dark:text-slate-300 dark:hover:bg-blue-600 dark:hover:text-white'
+            }`}
+          >
+            {copiedAccount ? (
+              <>
+                <Check className="w-3.5 h-3.5" />
+                <span>Copied!</span>
+              </>
+            ) : (
+              <>
+                <span>• Copy Account</span>
+              </>
+            )}
+          </button>
+
+          <button
             onClick={() => setShowQR(!showQR)}
-            className="flex-1 py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-300 font-sans font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+            className="py-1.5 px-3 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-300 font-sans font-bold text-[10px] uppercase flex items-center justify-center gap-1 transition-all shrink-0"
             aria-label="Toggle QR Code representation"
           >
-            <QrCode className="w-4 h-4 text-slate-500" />
-            <span>Show QR Code</span>
+            <QrCode className="w-3.5 h-3.5 text-slate-400" />
+            <span>QR Scan</span>
           </button>
 
           <button
             onClick={handleShare}
-            className={`p-2 rounded-xl border transition-all ${
+            className={`p-1.5 rounded-full border transition-all ${
               copiedShare
-                ? 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-950/40 dark:text-blue-400 dark:border-blue-900'
-                : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400'
+                ? 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-950/40 dark:text-blue-400'
+                : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-404'
             }`}
             title="Share Details"
             aria-label="Copy share information"
           >
             {copiedShare ? (
-              <span className="text-[10px] font-bold px-1 text-blue-600 dark:text-blue-400 uppercase tracking-widest shrink-0 block">Copied</span>
+              <span className="text-[8px] font-bold px-1 text-blue-600 dark:text-blue-400 uppercase tracking-widest shrink-0 block">Done</span>
             ) : (
-              <Share2 className="w-4 h-4" />
+              <Share2 className="w-3.5 h-3.5" />
             )}
           </button>
         </div>

@@ -159,7 +159,7 @@ export default function FooterView() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Find Us</span>
-                  <span className="text-white font-semibold">Mercato Electronic Strip, Addis Ababa, Ethiopia</span>
+                  <span className="text-white font-semibold">Kilinto, Addis Ababa, Ethiopia</span>
                 </div>
               </div>
             </div>
